@@ -13,7 +13,7 @@ export async function uploadComic(args: {
 }) {
   const ext = args.file.name.split(".").pop()?.toLowerCase() ?? "";
   if (!["cbz","cbr"].includes(ext)) throw new Error("Upload a .cbz or .cbr file.");
-  if (args.file.size > 50 * 1024 * 1024) throw new Error("File too large.");
+  if (args.file.size > 4096 * 1024 * 1024) throw new Error("File too large.");
 
   const user = auth.currentUser;
   if (!user) throw new Error("Sign in first.");
